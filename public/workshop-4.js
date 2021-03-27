@@ -27,7 +27,7 @@ const camera = new THREE.PerspectiveCamera(
   0.01,
   100.0
 )
-camera.position.set(0, 2, 10)
+camera.position.set(0, 3, 8)
 camera.lookAt(0, 0, 0)
 
 // Create control
@@ -56,13 +56,13 @@ scene.add(planetMesh)
 const starGeometry = new THREE.SphereGeometry(1, 32, 32)
 const starMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff })
 const starMesh = new THREE.Mesh(starGeometry, starMaterial)
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 1500; i++) {
   const star = starMesh.clone()
-  const scale = Math.random() * 0.02
+  const scale = Math.random() * 0.01
   star.scale.set(scale, scale, scale)
-  star.position.x = (Math.random() - 0.5) * 15
-  star.position.y = (Math.random() - 0.5) * 15
-  star.position.z = (Math.random() - 0.5) * 15
+  star.position.x = (Math.random() - 0.5) * 10
+  star.position.y = (Math.random() - 0.5) * 10
+  star.position.z = (Math.random() - 0.5) * 10
   scene.add(star)
 }
 
@@ -76,7 +76,7 @@ floorMesh.receiveShadow = true
 scene.add(floorMesh)
 
 // Create ambient light
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.3)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
 scene.add(ambientLight)
 
 // Create point light
