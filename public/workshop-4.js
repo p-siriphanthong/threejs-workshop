@@ -53,17 +53,21 @@ planetMesh.position.z = 3
 scene.add(planetMesh)
 
 // Create star objects
+const stars = []
+const STAR_COUNT = 1500
 const starGeometry = new THREE.SphereGeometry(1, 32, 32)
 const starMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff })
 const starMesh = new THREE.Mesh(starGeometry, starMaterial)
-for (let i = 0; i < 1500; i++) {
+for (let i = 0; i < STAR_COUNT; i++) {
   const star = starMesh.clone()
+  star.material = planetMaterial.clone()
   const scale = Math.random() * 0.01
   star.scale.set(scale, scale, scale)
   star.position.x = (Math.random() - 0.5) * 10
   star.position.y = (Math.random() - 0.5) * 10
   star.position.z = (Math.random() - 0.5) * 10
   scene.add(star)
+  stars.push(star)
 }
 
 // Create floor object
@@ -97,6 +101,14 @@ const updateFrame = () => {
   planetMesh.position.x = Math.cos(planetV) * 3
   planetMesh.position.z = Math.sin(planetV) * 3
   planetV += 0.02
+
+  for (let i = 0; i < 5; i++) {
+    const activeStar = stars[Math.floor(Math.random() * STAR_COUNT)]
+    activeStar.material.emissive = new THREE.Color(0xffffff)
+    setTimeout(() => {
+      activeStar.material.emissive = new THREE.Color(0x000000)
+    }, Math.random() * 800)
+  }
 
   // Action
   stats.update()
