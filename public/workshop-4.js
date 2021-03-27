@@ -18,6 +18,7 @@ document.body.appendChild(stats.dom)
 // Create Scene
 const scene = new THREE.Scene()
 scene.background = new THREE.Color(0x202020)
+scene.fog = new THREE.FogExp2(0x202020, 0.085)
 
 // Create Camera
 const camera = new THREE.PerspectiveCamera(
