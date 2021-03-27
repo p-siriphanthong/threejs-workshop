@@ -5,6 +5,8 @@ import { OrbitControls } from '/three/tools/jsm/controls/OrbitControls.js'
 // Create WebGL Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true })
 renderer.setSize(window.innerWidth, window.innerHeight)
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
 // Show Stats
 const stats = new Stats()
@@ -38,6 +40,7 @@ const sunMaterial = new THREE.MeshStandardMaterial({
   emissive: 0xffff00
 })
 const sunMesh = new THREE.Mesh(sunGeometry, sunMaterial)
+sunMesh.castShadow = true
 scene.add(sunMesh)
 
 // Create planet object
@@ -68,14 +71,22 @@ const floorMaterial = new THREE.MeshStandardMaterial({ color: 0xc4e6a8 })
 const floorMesh = new THREE.Mesh(floorGeometry, floorMaterial)
 floorMesh.rotation.x = -Math.PI / 2
 floorMesh.position.y = -5
+floorMesh.receiveShadow = true
 scene.add(floorMesh)
 
-// Create lights
+// Create ambient light
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.3)
 scene.add(ambientLight)
 
+// Create point light
 const pointLight = new THREE.PointLight(0xffffff, 1, 50)
 scene.add(pointLight)
+
+// Create directional light
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2)
+directionalLight.position.set(0, 10, 0)
+directionalLight.castShadow = true
+scene.add(directionalLight)
 
 // This function will update every frame
 let planetV = 0
