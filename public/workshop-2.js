@@ -1,5 +1,9 @@
+import * as dat from '/dat.gui/build/dat.gui.module.js'
 import * as THREE from '/three/build/three.module.js'
 import Stats from '/three/tools/jsm/libs/stats.module.js'
+
+// Debuger
+const gui = new dat.GUI()
 
 // Create WebGL Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -29,6 +33,9 @@ const camera = new THREE.PerspectiveCamera(
 )
 camera.position.set(0, 1, 5)
 camera.lookAt(0, -1, 0)
+gui.add(camera.position, 'x').name('Camera X').min(-3).max(3)
+gui.add(camera.position, 'y').name('Camera Y').min(-3).max(3)
+gui.add(camera.position, 'z').name('Camera Z').min(1).max(10)
 
 // Create box object
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1)

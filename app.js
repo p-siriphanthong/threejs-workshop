@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000
 app.set('view engine', 'ejs')
 app.set('views', './views')
 app.use('/three', express.static('ThreeJS'))
+app.use('/dat.gui', express.static('node_modules/dat.gui'))
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
