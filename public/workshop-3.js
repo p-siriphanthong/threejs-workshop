@@ -1,3 +1,4 @@
+// See example 3
 import * as THREE from '/three/build/three.module.js'
 import Stats from '/three/tools/jsm/libs/stats.module.js'
 

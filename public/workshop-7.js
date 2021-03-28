@@ -1,3 +1,4 @@
+// See example 7
 import * as THREE from '/three/build/three.module.js'
 import Stats from '/three/tools/jsm/libs/stats.module.js'
 import { OrbitControls } from '/three/tools/jsm/controls/OrbitControls.js'

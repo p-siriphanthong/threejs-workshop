@@ -1,3 +1,4 @@
+// See example 6, 6-2, 8
 // running animation will be loop automaticly
 // a next animation will be run when press spacebar
 // animation number `i` will be run when press `i`
