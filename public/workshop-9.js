@@ -1,6 +1,8 @@
-// See example 12
+// See example 13, 14
+
 // Download texture from https://quixel.com/megascans
 // Download HDR from https://hdrihaven.com/hdris
+
 import * as THREE from '/three/build/three.module.js'
 import Stats from '/three/tools/jsm/libs/stats.module.js'
 import { RGBELoader } from '/three/tools/jsm/loaders/RGBELoader.js'

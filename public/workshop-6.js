@@ -1,7 +1,8 @@
-// See example 6, 6-2, 8
-// running animation will be loop automaticly
-// a next animation will be run when press spacebar
-// animation number `i` will be run when press `i`
+// See example 6, 7, 9
+
+// Running animation will be loop automaticly
+// A next animation will be run when press spacebar
+// Animation number `i` will be run when press `i`
 
 import * as THREE from '/three/build/three.module.js'
 import Stats from '/three/tools/jsm/libs/stats.module.js'

@@ -1,4 +1,4 @@
-// See example 9, 10, 11
+// See example 10, 11, 12
 import * as dat from '/dat.gui/build/dat.gui.module.js'
 import * as THREE from '/three/build/three.module.js'
 import Stats from '/three/tools/jsm/libs/stats.module.js'

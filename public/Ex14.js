@@ -1,15 +1,18 @@
-// Example 3
+// Example 14
 import {
   WebGLRenderer,
   Scene,
   PerspectiveCamera,
   Color,
-  BoxGeometry,
-  MeshBasicMaterial,
+  SphereGeometry,
+  MeshPhysicalMaterial,
   Mesh,
-  TextureLoader
+  PMREMGenerator,
+  UnsignedByteType
 } from '/three/build/three.module.js'
 import Stats from '/three/tools/jsm/libs/stats.module.js'
+import { RGBELoader } from '/three/tools/jsm/loaders/RGBELoader.js'
+import { OrbitControls } from '/three/tools/jsm/controls/OrbitControls.js'
 
 // Create WebGL Renderer
 const renderer = new WebGLRenderer({ antialias: true })
@@ -36,17 +39,31 @@ const camera = new PerspectiveCamera(
 camera.position.set(0, 1, 3)
 camera.lookAt(0, 0, 0)
 
+const pmrem = new PMREMGenerator(renderer)
+pmrem.compileEquirectangularShader()
+
+const rgbLoader = new RGBELoader()
+rgbLoader.setDataType(UnsignedByteType)
+
+rgbLoader.load('textures/small_cathedral_1k.hdr', (tex) => {
+  const hdrMap = pmrem.fromEquirectangular(tex)
+  scene.background = hdrMap.texture
+  scene.environment = hdrMap.texture
+})
+
 // Create Object
-const boxGeometry = new BoxGeometry(1, 1, 1)
-const boxTexture = new TextureLoader().load('textures/basicBox.jpg')
-const boxMaterial = new MeshBasicMaterial({
-  color: 0xffffff,
-  map: boxTexture
+const boxGeometry = new SphereGeometry(1, 32, 32)
+const boxMaterial = new MeshPhysicalMaterial({
+  color: 0xffff00,
+  roughness: 0.1
 })
 const boxMesh = new Mesh(boxGeometry, boxMaterial)
 scene.add(boxMesh)
 
 let speed = 0
+
+const controls = new OrbitControls(camera, renderer.domElement)
+controls.update()
 
 // This function will update every frame
 const updateFrame = () => {
@@ -54,6 +71,7 @@ const updateFrame = () => {
 
   // Action
   stats.update()
+  controls.update()
 
   boxMesh.position.y = Math.cos(speed) * 0.5
   boxMesh.rotation.x += 0.01
