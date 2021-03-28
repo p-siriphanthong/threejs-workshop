@@ -28,7 +28,6 @@ const camera = new THREE.PerspectiveCamera(
   100.0
 )
 camera.position.set(0, 3, 8)
-camera.lookAt(0, 0, 0)
 
 // Create control
 const controls = new OrbitControls(camera, renderer.domElement)
