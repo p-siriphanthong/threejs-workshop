@@ -42,6 +42,7 @@ let animationMixer,
   activeAnimation,
   activeAnimationIndex = 0,
   animationPlayingTime = 0
+const animationFadeTime = 0.5
 const gltfLoader = new GLTFLoader()
 gltfLoader.load('models/vibrantRex.glb', (gltf) => {
   animationMixer = new THREE.AnimationMixer(gltf.scene)
@@ -118,7 +119,7 @@ function playAnimation(animationAction) {
     .reset()
     .setEffectiveTimeScale(1)
     .setEffectiveWeight(1)
-    .fadeIn(0.2)
+    .fadeIn(animationFadeTime)
     .play()
 
   document.getElementById(
@@ -127,7 +128,7 @@ function playAnimation(animationAction) {
 }
 
 function changeAnimation(animationId) {
-  activeAnimation.fadeOut(0.2)
+  activeAnimation.fadeOut(animationFadeTime)
 
   activeAnimationIndex = animationId
     ? animationId - 1
