@@ -10,7 +10,7 @@ app.use('/dat.gui', express.static('node_modules/dat.gui'))
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.send('ThreeJSDemo')
+  res.send('ThreeJS Workshop')
 })
 
 const addPage = (r, t, v = 'preview') => {
