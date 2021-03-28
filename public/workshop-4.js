@@ -60,7 +60,7 @@ const starMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff })
 const starMesh = new THREE.Mesh(starGeometry, starMaterial)
 for (let i = 0; i < STAR_COUNT; i++) {
   const star = starMesh.clone()
-  star.material = planetMaterial.clone()
+  star.material = starMaterial.clone()
   const scale = Math.random() * 0.01
   star.scale.set(scale, scale, scale)
   star.position.x = (Math.random() - 0.5) * 10

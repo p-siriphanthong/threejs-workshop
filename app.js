@@ -46,6 +46,7 @@ addPage('/workshop-5', 'workshop-5')
 addPage('/workshop-6', 'workshop-6')
 addPage('/workshop-7', 'workshop-7')
 addPage('/workshop-8', 'workshop-8')
+addPage('/workshop-9', 'workshop-9')
 
 app.listen(port, () => {
   console.log('Starting server. PORT:' + port)
